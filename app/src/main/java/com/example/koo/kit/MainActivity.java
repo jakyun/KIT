@@ -18,6 +18,7 @@ import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    //https://github.com/jakyun/kitAndroid.git
 
     private Fragment homeFragment;
     private Fragment settingFragment;
