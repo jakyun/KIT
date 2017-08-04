@@ -40,7 +40,7 @@ public class SignUp2 extends Activity {
         }
 
         TextView textViewAge = (TextView) findViewById(R.id.textViewAge);
-        String Age = intent.getStringExtra("page1_rdgroup2");
+        String Age = intent.getStringExtra("age_type");
         if(Age != null) {
             textViewAge.setText(Age);
         }
