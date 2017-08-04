@@ -9,7 +9,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 /**
- * Created by Koo on 2017-07-05.
+ * Created by Koo on 2017-08-04.
  */
 
 public class Intro extends AppCompatActivity {
@@ -18,8 +18,7 @@ public class Intro extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         setContentView(R.layout.intro);
@@ -27,7 +26,7 @@ public class Intro extends AppCompatActivity {
         Handler mHandler = new Handler();
         mHandler.postDelayed(new Runnable() {
             public void run() {
-                Intent intent = new Intent(Intro.this, MainActivity.class);
+                Intent intent = new Intent(Intro.this, Theme.class);
                 startActivity(intent);
                 finish();
             }

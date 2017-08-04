@@ -3,13 +3,13 @@ package com.example.koo.kit;
 import android.graphics.drawable.Drawable;
 
 /**
- * Created by Koo on 2017-07-05.
+ * Created by Koo on 2017-08-04.
  */
 
-public class ListFragmentItem {
-    private Drawable iconDrawable;
-    private String titleStr;
-    private String descStr;
+public class Item {
+    private Drawable iconDrawable ;
+    private String titleStr ;
+    private String descStr ;
 
     public void setIcon(Drawable icon) {
         iconDrawable = icon ;
@@ -30,5 +30,4 @@ public class ListFragmentItem {
     public String getDesc() {
         return this.descStr ;
     }
-
 }
