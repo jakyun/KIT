@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -32,7 +33,8 @@ import java.util.Properties;
 public class Login extends Activity{
 
     EditText edt_login_id, edt_login_pw;
-    Button btn_login, btn_signup;
+    Button btn_login;
+    TextView text_signup;
 
     String encodedString = "";
     String result = "";
@@ -52,14 +54,14 @@ public class Login extends Activity{
         edt_login_pw = (EditText)findViewById(R.id.edt_login_pw);
 
         btn_login = (Button)findViewById(R.id.btn_login);
-        btn_signup = (Button)findViewById(R.id.btn_signup);
+        text_signup = (TextView) findViewById(R.id.text_signup);
 
         buttonClickListener();
     }
 
     private void buttonClickListener() {
         btn_login.setOnClickListener(ClickListener);
-        btn_signup.setOnClickListener(ClickListener);
+        text_signup.setOnClickListener(ClickListener);
     }
 
     View.OnClickListener ClickListener = new View.OnClickListener() {
@@ -78,7 +80,7 @@ public class Login extends Activity{
                     }
                     break;
 
-                case R.id.btn_signup:
+                case R.id.text_signup:
                     Toast.makeText(getApplicationContext(), "회원가입", Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(getApplicationContext(), SignUp.class);
                     startActivity(i);
@@ -210,36 +212,6 @@ public class Login extends Activity{
                 else {
                     Toast.makeText(getApplicationContext(), "비밀번호가 틀립니다.", Toast.LENGTH_SHORT).show();
                 }
-
-                /*
-                userCode = json.getInt("userCode"); //정회원과 준회원 구분
-
-                // 정회원일때
-                if(userCode == 1) {
-                    userId = json.getInt("userId");
-                    userName = json.getString("userName");
-                    userBirth = json.getString("userBirth");
-                    userGender = json.getString("userGender");
-
-                    // 자동 로그인
-                    SharedPreferences sharedPreferences = getSharedPreferences("sharedPreferences",MODE_PRIVATE);   //쉐어드 객체 얻기
-                    SharedPreferences.Editor sharedPreferencesEditor = sharedPreferences.edit();                        //쉐어드 쓰기
-                    sharedPreferencesEditor.putInt("userId", userId);
-                    sharedPreferencesEditor.putString("userTel", edt_tel.getText().toString());
-                    sharedPreferencesEditor.putString("userName", userName);
-                    sharedPreferencesEditor.putString("userBirth", userBirth);
-                    sharedPreferencesEditor.putString("userGender", userGender);
-                    if(json.length() == 7) { //이메일이 NULL이 아닐 때
-                        userEmail = json.getString("userEmail");
-                        sharedPreferencesEditor.putString("userEmail", userEmail);
-                    }
-                    sharedPreferencesEditor.commit();
-
-                    Intent i = new Intent(getApplicationContext(), Main.class);
-                    startActivity(i);
-                    finish();
-                }
-                */
             }
 
             // 아이디가 없을때

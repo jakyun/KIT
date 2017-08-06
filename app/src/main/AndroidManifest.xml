@@ -26,7 +26,9 @@
         <activity android:name=".MyPage" />
         <activity android:name=".SignUp" />
         <activity android:name=".SignUp2" />
-        <activity android:name=".Login"/>
+        <activity
+            android:name=".Login"
+            android:theme="@android:style/Theme.DeviceDefault.Light.Dialog.NoActionBar"/>
 
     </application>
 
