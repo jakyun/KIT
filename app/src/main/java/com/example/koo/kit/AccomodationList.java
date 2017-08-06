@@ -15,12 +15,6 @@ import android.widget.ListView;
 
 public class AccomodationList extends Fragment {
 
-    /*
-    private List<String> mData;
-    private ArrayAdapter<String> mAdapter;
-    private ListView mListView;
-    */
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,50 +44,4 @@ public class AccomodationList extends Fragment {
                 "오향족발", "족발집입니다");
         return layout;
     }
-
-        /*
-        //1.데이터준비
-        initData();
-
-
-        //2.Adapter준비
-        initAdapter();
-
-
-        //3.Listview에 Adapter 연결하기
-        initListView();
-    }
-
-    private void initData() {
-        mData = new ArrayList<>();
-        for(int i = 1; i <= 10;i++) {
-            mData.add("Item" + i);
-        }
-    }
-
-    private void initAdapter() {
-        mAdapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, mData);
-    }
-
-
-    private void initListView() {
-
-        mListView = (ListView)findViewById(R.id.listview);
-        mListView.setAdapter(mAdapter);
-    }
-       /*
-        ListView listView = (ListView)findViewById(R.id.list);
-
-        ArrayList<item> data = new ArrayList<>();
-        item beer = new item(R.drawable.beer,"Beer");
-        item jbro = new item(R.drawable.jbro,"Jbro");
-        item pork = new item(R.drawable.pork,"Pork");
-
-        data.add(beer);
-        data.add(jbro);
-        data.add(pork);
-
-        ListviewAdapter adapter = new ListviewAdapter(this,R.layout.item,data);
-        listView.setAdapter(adapter);
-        */
 }

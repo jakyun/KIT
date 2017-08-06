@@ -34,7 +34,7 @@ public class Login extends Activity{
 
     EditText edt_login_id, edt_login_pw;
     Button btn_login;
-    TextView text_signup;
+    TextView text_signup, text_find;
 
     String encodedString = "";
     String result = "";
@@ -54,7 +54,9 @@ public class Login extends Activity{
         edt_login_pw = (EditText)findViewById(R.id.edt_login_pw);
 
         btn_login = (Button)findViewById(R.id.btn_login);
+
         text_signup = (TextView) findViewById(R.id.text_signup);
+        text_find = (TextView)findViewById(R.id.text_find);
 
         buttonClickListener();
     }
@@ -62,6 +64,7 @@ public class Login extends Activity{
     private void buttonClickListener() {
         btn_login.setOnClickListener(ClickListener);
         text_signup.setOnClickListener(ClickListener);
+        text_find.setOnClickListener(ClickListener);
     }
 
     View.OnClickListener ClickListener = new View.OnClickListener() {
@@ -85,6 +88,10 @@ public class Login extends Activity{
                     Intent i = new Intent(getApplicationContext(), SignUp.class);
                     startActivity(i);
                     finish();
+                    break;
+
+                case R.id.text_find:
+                    Toast.makeText(getApplicationContext(), "아이디/비번 찾기", Toast.LENGTH_SHORT).show();
                     break;
             }
         }
