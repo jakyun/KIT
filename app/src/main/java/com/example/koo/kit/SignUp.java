@@ -2,6 +2,7 @@ package com.example.koo.kit;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -37,7 +38,7 @@ public class SignUp extends Activity {
 
     String encodedString = "";
     String result = "";
-    String ip = "192.168.0.17";
+    String ip = "";
 
     EditText edt_id, edt_pw, edt_pw2, edt_email;
     Button btn_accept, btn_cancel, btn_check;
@@ -48,12 +49,15 @@ public class SignUp extends Activity {
     Spinner spn_age_type;
     String string_age_type;
 
-    int check = 0;
+    int check = 0; // 중복확인을 했는지 확인
 
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
+
+        SharedPreferences sharedPreferences = getSharedPreferences("sharedPreferences",MODE_PRIVATE);
+        ip = sharedPreferences.getString("ip", "");
 
         edt_id = (EditText)findViewById(R.id.edt_id);
         edt_pw = (EditText)findViewById(R.id.edt_pw);
@@ -112,6 +116,22 @@ public class SignUp extends Activity {
                         Toast.makeText(getApplicationContext(), "아이디 중복을 확인해주세요.", Toast.LENGTH_SHORT).show();
 
                     else {
+                        SignUpAsyncTaskCall();
+
+                        Toast.makeText(getApplicationContext(), "회원가입", Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(getApplicationContext(), MyPage.class);
+                        startActivity(i);
+
+                        // 자동 로그인
+                        SharedPreferences sharedPreferences = getSharedPreferences("sharedPreferences",MODE_PRIVATE);   //쉐어드 객체 얻기
+                        SharedPreferences.Editor sharedPreferencesEditor = sharedPreferences.edit();                        //쉐어드 쓰기
+                        sharedPreferencesEditor.putString("userId", edt_id.getText().toString());
+                        sharedPreferencesEditor.putString("userEmail", edt_email.getText().toString());
+                        sharedPreferencesEditor.commit();
+
+                        finish();
+
+                        /*
                         Intent intent = new Intent(getApplicationContext(), SignUp2.class);
 
                         //아이디, 비번, 이메일
@@ -127,9 +147,7 @@ public class SignUp extends Activity {
                         intent.putExtra("age_type", string_age_type);
 
                         startActivity(intent);
-
-                        finish();
-                        SignUpAsyncTaskCall();
+                        */
                     }
                 }
                 break;
@@ -333,52 +351,13 @@ public class SignUp extends Activity {
 
             // 아이디가 있을 때
             if(jArr != null && jArr.length() > 0) {
-
                 Toast.makeText(getApplicationContext(), "이미 사용중인 아이디입니다.", Toast.LENGTH_SHORT).show();
-
-                /*
-                json = jArr.getJSONObject(0);
-
-                id = json.getInt("id"); //정회원과 준회원 구분
-
-                // 정회원일때
-                if(userCode == 1) {
-                    userId = json.getInt("userId");
-                    userName = json.getString("userName");
-                    userBirth = json.getString("userBirth");
-                    userGender = json.getString("userGender");
-
-                    // 자동 로그인
-                    SharedPreferences sharedPreferences = getSharedPreferences("sharedPreferences",MODE_PRIVATE);   //쉐어드 객체 얻기
-                    SharedPreferences.Editor sharedPreferencesEditor = sharedPreferences.edit();                        //쉐어드 쓰기
-                    sharedPreferencesEditor.putInt("userId", userId);
-                    sharedPreferencesEditor.putString("userTel", edt_tel.getText().toString());
-                    sharedPreferencesEditor.putString("userName", userName);
-                    sharedPreferencesEditor.putString("userBirth", userBirth);
-                    sharedPreferencesEditor.putString("userGender", userGender);
-                    if(json.length() == 7) { //이메일이 NULL이 아닐 때
-                        userEmail = json.getString("userEmail");
-                        sharedPreferencesEditor.putString("userEmail", userEmail);
-                    }
-                    sharedPreferencesEditor.commit();
-
-                    Intent i = new Intent(getApplicationContext(), Main.class);
-                    startActivity(i);
-                    finish();
-                }
-                */
             }
 
             // 아이디가 없을 때
             else {
                 Toast.makeText(getApplicationContext(), "사용 가능한 아이디입니다.", Toast.LENGTH_SHORT).show();
                 check = 1;
-                /*
-                Intent i = new Intent(getApplicationContext(), Enroll.class);
-                i.putExtra("userTel", edt_tel.getText().toString());
-                startActivity(i);
-                finish();
-                */
             }
 
         }catch(JSONException e){

@@ -21,7 +21,7 @@
             android:layout_weight="6">//서울
 
             <Button
-                android:id="@+id/button01"
+                android:id="@+id/btn_theme1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="#FFB2D9"
@@ -43,7 +43,7 @@
                 android:layout_weight="5">//명동
 
                 <Button
-                    android:id="@+id/button02"
+                    android:id="@+id/btn_theme2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="#FFA7A7"
@@ -58,7 +58,7 @@
                 android:layout_weight="5">//일산
 
                 <Button
-                    android:id="@+id/button03"
+                    android:id="@+id/btn_theme3"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="#FFE08C"

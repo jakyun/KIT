@@ -26,6 +26,7 @@
         <activity android:name=".MyPage" />
         <activity android:name=".SignUp" />
         <activity android:name=".SignUp2" />
+        <activity android:name=".Login"/>
 
     </application>
 
