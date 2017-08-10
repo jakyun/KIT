@@ -21,7 +21,7 @@ public class Map extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.map);
+        setContentView(R.layout.activity_map);
 
         FragmentManager fragmentManager = getFragmentManager();
         MapFragment mapFragment = (MapFragment)fragmentManager
@@ -33,12 +33,18 @@ public class Map extends AppCompatActivity
     public void onMapReady(final GoogleMap map) {
 
         LatLng SEOUL = new LatLng(37.56, 126.97);
+        LatLng SEOUL1 = new LatLng(37.54, 126.99);
 
         MarkerOptions markerOptions = new MarkerOptions();
+        MarkerOptions markerOptions1 = new MarkerOptions();
         markerOptions.position(SEOUL);
+        markerOptions1.position(SEOUL1);
         markerOptions.title("서울");
+        markerOptions1.title("어딘가");
         markerOptions.snippet("한국의 수도");
+        markerOptions1.snippet("어디일까요?");
         map.addMarker(markerOptions);
+        map.addMarker(markerOptions1);
 
         map.moveCamera(CameraUpdateFactory.newLatLng(SEOUL));
         map.animateCamera(CameraUpdateFactory.zoomTo(10));
