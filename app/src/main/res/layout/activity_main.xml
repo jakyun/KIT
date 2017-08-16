@@ -22,14 +22,15 @@
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|enterAlways"
-            app:popupTheme="@style/AppTheme.PopupOverlay">
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
 
             <EditText
                 android:id="@+id/toolar_edittext"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textColor="@color/fontBlack"
-                android:hint="검색어를 입력하세요."/>
+                android:textColor="@color/fontBlack" />
 
         </android.support.v7.widget.Toolbar>
 
