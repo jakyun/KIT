@@ -89,12 +89,16 @@ RestrauntList extends Fragment {
     public class MyItem{
         public String url="http://" + ip + ":8080/kit/image/";
 
+        String id="";
+        String type="";
         String photoName="";
         String title="";
         String info="";
 
-        public MyItem(String photoName, String title, String info){
+        public MyItem(String id, String type, String photoName, String title, String info){
             super();
+            this.id = id;
+            this.type = type;
             this.photoName = url+photoName;
             this.title = title;
             this.info = info;
@@ -149,8 +153,9 @@ RestrauntList extends Fragment {
                 public void onClick(View v) {
                     //클릭 시 이동 !!
                     Intent intent = new Intent(getContext(), DetailActivity.class);
-                    //intent.putExtra("businessId", myItems.get(pos).businessId);
-                    //Toast.makeText(getContext(), myItems.get(pos).businessId, Toast.LENGTH_SHORT).show();
+                    intent.putExtra("businessId", myItems.get(pos).id);
+                    intent.putExtra("businessType", myItems.get(pos).type);
+                    //Toast.makeText(getContext(), myItems.get(pos).id, Toast.LENGTH_SHORT).show();
                     startActivity(intent);
                 }
             });
@@ -200,6 +205,7 @@ RestrauntList extends Fragment {
             BufferedReader bufreader=null;
 
             Properties prop = new Properties();
+            prop.setProperty("businessType", "1"); // 음식점 Type = 1
 
             encodedString = encodeString(prop);
 
@@ -254,7 +260,7 @@ RestrauntList extends Fragment {
             int i;
             for (i = 0; i < jArr.length(); i++ ) {
                 json = jArr.getJSONObject(i);
-                storeList.add(new MyItem(json.getString("photoName"), json.getString("businessName"),json.getString("businessExplanation")));
+                storeList.add(new MyItem(json.getString("businessId"), json.getString("businessType"), json.getString("photoName"), json.getString("businessName"),json.getString("businessExplanation")));
             }
             adapter.notifyDataSetChanged();     //리스트
             //     mLockListView=false;

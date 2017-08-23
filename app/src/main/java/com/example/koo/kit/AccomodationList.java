@@ -1,6 +1,7 @@
 package com.example.koo.kit;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -11,9 +12,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -53,7 +57,7 @@ public class AccomodationList extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View result =inflater.inflate(R.layout.activity_list, container, false);
-/*
+
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("sharedPreferences", getActivity().MODE_PRIVATE);
         ip = sharedPreferences.getString("ip", "");
 
@@ -69,25 +73,32 @@ public class AccomodationList extends Fragment{
         listView.setDivider(null);
 
         StoreAsyncTaskCall();
-*/
+
         return result;
     }
 
 /* *********************************************************************************************************************************** */
 
     public class MyItem{
+        public String url="http://" + ip + ":8080/kit/image/";
+
+        String id="";
+        String type="";
+        String photoName="";
         String title="";
         String info="";
 
-        public MyItem(String title, String info){
+        public MyItem(String id, String type, String photoName, String title, String info){
             super();
+            this.id = id;
+            this.type = type;
+            this.photoName = url+photoName;
             this.title = title;
             this.info = info;
         }
     }
 
     public class MyListAdapter extends BaseAdapter {
-
         Context context;
         LayoutInflater inflater;
         ArrayList<MyItem> myItems;
@@ -120,11 +131,27 @@ public class AccomodationList extends Fragment{
                 convertView = inflater.inflate(layout,parent,false);
             }
 
+            final ImageView imageView=(ImageView)convertView.findViewById(R.id.businessImage);
+            Glide.with(this.context).load(myItems.get(pos).photoName).into(imageView);
+
             TextView title=(TextView)convertView.findViewById(R.id.text_title);
             title.setText(myItems.get(pos).title);
 
             TextView info=(TextView)convertView.findViewById(R.id.text_info);
             info.setText(myItems.get(pos).info);
+
+
+            convertView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //클릭 시 이동 !!
+                    Intent intent = new Intent(getContext(), DetailActivity.class);
+                    intent.putExtra("businessId", myItems.get(pos).id);
+                    intent.putExtra("businessType", myItems.get(pos).type);
+                    //Toast.makeText(getContext(), myItems.get(pos).id, Toast.LENGTH_SHORT).show();
+                    startActivity(intent);
+                }
+            });
 
             return convertView;
         }
@@ -171,11 +198,11 @@ public class AccomodationList extends Fragment{
             BufferedReader bufreader=null;
 
             Properties prop = new Properties();
+            prop.setProperty("businessType", "2"); // 숙박 Type = 2
 
             encodedString = encodeString(prop);
 
             try{
-
                 url=new URL("http://" + ip + ":8080/kit/businessList.do");
                 urlConnection = (HttpURLConnection) url.openConnection();
 
@@ -212,7 +239,6 @@ public class AccomodationList extends Fragment{
         }
         protected void onPostExecute(String result){  //Thread 이후 UI 처리 result는 Thread의 리턴값!!!
             jsonFirstList(result);
-
         }
     }
 
@@ -227,11 +253,8 @@ public class AccomodationList extends Fragment{
             int i;
             for (i = 0; i < jArr.length(); i++ ) {
                 json = jArr.getJSONObject(i);
-                storeList.add(new MyItem(json.getString("businessName"),json.getString("businessExplanation")));
+                storeList.add(new MyItem(json.getString("businessId"), json.getString("businessType"), json.getString("photoName"), json.getString("businessName"),json.getString("businessExplanation")));
             }
-
-            Toast.makeText(getContext(), "데이터받아옴", Toast.LENGTH_SHORT).show();
-
             adapter.notifyDataSetChanged();     //리스트
             //     mLockListView=false;
 
