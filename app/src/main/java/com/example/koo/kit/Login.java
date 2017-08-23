@@ -155,6 +155,8 @@ public class Login extends Activity{
 
                 out.flush();    //서버로 버퍼의 내용 전송
 
+                Toast.makeText(getApplicationContext(), "서버로 전송", Toast.LENGTH_SHORT).show();
+
                 buf = new BufferedInputStream(urlConnection.getInputStream());
                 bufreader = new BufferedReader(new InputStreamReader(buf,"utf-8"));
 
@@ -187,6 +189,8 @@ public class Login extends Activity{
         try{
             JSONObject json= new JSONObject(recv);
             JSONArray jArr = json.getJSONArray("checkUser");
+
+            Toast.makeText(getApplicationContext(), "데이터 받아오기", Toast.LENGTH_SHORT).show();
 
             // 아이디가 있을때
             if(jArr != null && jArr.length() > 0) {

@@ -51,6 +51,8 @@
             android:name=".Login"
             android:theme="@android:style/Theme.DeviceDefault.Light.Dialog.NoActionBar"/>
 
+        <activity android:name=".DetailActivity"/>
+
     </application>
 
 </manifest>

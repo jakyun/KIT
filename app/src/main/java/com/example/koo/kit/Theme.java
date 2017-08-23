@@ -25,7 +25,7 @@ public class Theme extends AppCompatActivity {
 
         SharedPreferences sharedPreferences = getSharedPreferences("sharedPreferences",MODE_PRIVATE);
         SharedPreferences.Editor sharedPreferencesEditor = sharedPreferences.edit();
-        sharedPreferencesEditor.putString("ip", "192.168.0.69" + "");  //ip 설정하기 저장하기
+        sharedPreferencesEditor.putString("ip", "10.138.43.209" + "");  //ip 설정하기 저장하기
         sharedPreferencesEditor.commit();
 
         btn_theme1 = (Button)findViewById(R.id.btn_theme1);
@@ -47,19 +47,19 @@ public class Theme extends AppCompatActivity {
             switch(v.getId()){
                 case R.id.btn_theme1:
                     Intent intent1 = new Intent(getApplicationContext(), MainActivity.class);
-                    //intent1.putExtra("theme", btn_theme1.getText().toString());
+                    //intent1.putExtra("theme", "1");
                     startActivity(intent1);
                     break;
 
                 case R.id.btn_theme2:
                     Intent intent2 = new Intent(getApplicationContext(), MainActivity.class);
-                    //intent2.putExtra("theme", btn_theme1.getText().toString());
+                    //intent2.putExtra("theme", "2");
                     startActivity(intent2);
                     break;
 
                 case R.id.btn_theme3:
                     Intent intent3 = new Intent(getApplicationContext(), MainActivity.class);
-                    //intent3.putExtra("theme", btn_theme1.getText().toString());
+                    //intent3.putExtra("theme", "3");
                     startActivity(intent3);
                     break;
             }
