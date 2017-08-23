@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
@@ -9,7 +8,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.5"/>
+        android:layout_weight="1"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -36,6 +35,11 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_weight="1"></LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="4">
 
             <TextView
@@ -43,21 +47,23 @@
                 android:layout_height="match_parent"
                 android:text="아이디"
                 android:textColor="#000000"
-                android:textSize="30dp" />
+                android:textSize="20dp"
+                android:gravity="center_vertical"/>
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="4"
+            android:layout_weight="3"
             android:weightSum="1">
 
             <EditText
                 android:id="@+id/edt_id"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint=" " />
+                android:hint=" "
+                />
 
         </LinearLayout>
 
@@ -72,7 +78,8 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/button_button02"
                 android:text="중복검사"
-                android:textColor="#4C67F3" />
+                android:textColor="#4C67F3"
+                android:gravity="center"/>
 
         </LinearLayout>
 
@@ -85,6 +92,11 @@
         android:weightSum="10"
         android:orientation="horizontal">
 
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -95,14 +107,15 @@
                 android:layout_height="match_parent"
                 android:text="비밀번호"
                 android:textColor="#000000"
-                android:textSize="30dp"/>
+                android:textSize="20dp"
+                android:gravity="center_vertical"/>
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="6"
+            android:layout_weight="4"
             android:weightSum="1">
 
             <EditText
@@ -122,6 +135,11 @@
         android:weightSum="10"
         android:orientation="horizontal">
 
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -132,14 +150,15 @@
                 android:layout_height="match_parent"
                 android:text="비밀번호확인"
                 android:textColor="#000000"
-                android:textSize="30dp"/>
+                android:textSize="20dp"
+                android:gravity="center_vertical"/>
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="6"
+            android:layout_weight="4"
             android:weightSum="1">
 
             <EditText
@@ -159,6 +178,11 @@
         android:weightSum="10"
         android:orientation="horizontal">
 
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -169,14 +193,15 @@
                 android:layout_height="match_parent"
                 android:text="이메일"
                 android:textColor="#000000"
-                android:textSize="30dp"/>
+                android:textSize="20dp"
+                android:gravity="center_vertical"/>
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="6"
+            android:layout_weight="4"
             android:weightSum="1">
 
             <EditText
@@ -199,6 +224,11 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="4">
 
             <TextView
@@ -206,7 +236,8 @@
                 android:layout_height="match_parent"
                 android:text="성별"
                 android:textColor="#000000"
-                android:textSize="30dp"/>
+                android:textSize="20dp"
+                android:gravity="center_vertical"/>
         </LinearLayout>
 
         <LinearLayout
@@ -251,6 +282,11 @@
         android:weightSum="10"
         android:orientation="horizontal">
 
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -261,13 +297,14 @@
                 android:layout_height="match_parent"
                 android:text="나이대"
                 android:textColor="#000000"
-                android:textSize="30dp"/>
+                android:textSize="20dp"
+                android:gravity="center_vertical"/>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="6"
+            android:layout_weight="4"
             android:weightSum="1">
 
             <Spinner
@@ -288,25 +325,25 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="0.8"
         android:weightSum="10"
         android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1.5"/>
+            android:layout_weight="2"/>
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="3">
+            android:layout_weight="2">
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="확인"
-                android:textSize="30dp"
+                android:textSize="20dp"
                 android:textColor="#4C67F3"
                 android:id="@+id/btn_accept"
                 android:background="@drawable/button_button02"/>
@@ -315,19 +352,19 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"/>
+            android:layout_weight="2"/>
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="3"
+            android:layout_weight="2"
             android:weightSum="1">
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="취소"
-                android:textSize="30dp"
+                android:textSize="20dp"
                 android:textColor="#4C67F3"
                 android:id="@+id/btn_cancel"
                 android:background="@drawable/button_button02"/>

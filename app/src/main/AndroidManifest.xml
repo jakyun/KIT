@@ -41,8 +41,6 @@
 
         <activity android:name=".SignUp" />
 
-        <activity android:name=".SignUp2" />
-
         <activity
             android:name=".Map"
             android:theme="@style/AppTheme.NoActionBar"/>

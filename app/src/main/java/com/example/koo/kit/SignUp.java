@@ -79,6 +79,7 @@ public class SignUp extends Activity {
         AgeSpinner.setAdapter(AgeAdapter);
 
         buttonClickListener();
+
     }
 
     private void buttonClickListener() {
@@ -130,24 +131,6 @@ public class SignUp extends Activity {
                         sharedPreferencesEditor.commit();
 
                         finish();
-
-                        /*
-                        Intent intent = new Intent(getApplicationContext(), SignUp2.class);
-
-                        //아이디, 비번, 이메일
-                        intent.putExtra("page1_Id", edt_id.getText().toString());
-                        intent.putExtra("page1_Password", edt_pw.getText().toString());
-                        intent.putExtra("page1_Password2", edt_pw2.getText().toString());
-                        intent.putExtra("page1_Email", edt_email.getText().toString());
-                        //라디오버튼
-                        RadioButton rd1 = (RadioButton) findViewById(rdgroup.getCheckedRadioButtonId());
-                        intent.putExtra("page1_rdgroup1", rd1.getText().toString());
-                        //스피너
-                        string_age_type = spn_age_type.getSelectedItem().toString();
-                        intent.putExtra("age_type", string_age_type);
-
-                        startActivity(intent);
-                        */
                     }
                 }
                 break;
